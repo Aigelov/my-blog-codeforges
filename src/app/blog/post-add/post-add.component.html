@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>Создание Поста</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="postForm">
+    <mat-form-field class="w-100 mb-3">
+      <mat-label>Title</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Title"
+        [formControlName]="'title'"
+        required
+      >
+      <mat-error *ngIf="postForm.get('title').hasError('required')">
+        Title is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100 mb-3">
+      <mat-label>SubTitle</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="SubTitle"
+        [formControlName]="'subTitle'"
+        required
+      >
+      <mat-error *ngIf="postForm.get('subTitle').hasError('required')">
+        SubTitle is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100 mb-3">
+      <mat-label>ImageUrl</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="ImageUrl"
+        [formControlName]="'imageUrl'"
+        required
+      >
+      <mat-error *ngIf="postForm.get('imageUrl').hasError('required')">
+        ImageUrl is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100 mb-3">
+      <mat-label>Content</mat-label>
+      <textarea
+        type="text"
+        matInput
+        placeholder="Content"
+        [formControlName]="'content'"
+        required
+      ></textarea>
+      <mat-error *ngIf="postForm.get('content').hasError('required')">
+        Content is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="postForm.invalid"
+    (click)="onSubmit()"
+  >Сохранить</button>
+  <button
+    mat-raised-button
+    mat-dialog-close
+  >Отмена</button>
+</mat-dialog-actions>
